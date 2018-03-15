@@ -29,7 +29,7 @@ function onDeviceReady() {
       });
   }, 10000);
 }*/
-document.getElementById("audioCapture").addEventListener("click", audioCapture);
+document.getElementById("audioCapture").addEventListener("click", imageCapture);
 
   //cordova.InAppBrowser.open('http://192.168.1.6:7777', '_self', 'location=yes,hidden=no');
   var conn = new WebSocket('ws://192.168.1.5:7777');
@@ -80,23 +80,21 @@ document.getElementById("audioCapture").addEventListener("click", audioCapture);
 
       };
 
-      function audioCapture() {
-        alert();
-   var options = {
-      limit: 1,
-      duration: 10
-   };
-   navigator.device.capture.captureAudio(onSuccess, onError, options);
+      function imageCapture() {
+         var options = {
+            limit: 1
+         };
+         navigator.device.capture.captureImage(onSuccess, onError, options);
 
-   function onSuccess(mediaFiles) {
-      var i, path, len;
-      for (i = 0, len = mediaFiles.length; i < len; i += 1) {
-         path = mediaFiles[i].fullPath;
-         console.log(mediaFiles);
+         function onSuccess(mediaFiles) {
+            var i, path, len;
+            for (i = 0, len = mediaFiles.length; i < len; i += 1) {
+               path = mediaFiles[i].fullPath;
+               console.log(mediaFiles);
+            }
+         }
+
+         function onError(error) {
+            navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
+         }
       }
-   }
-
-   function onError(error) {
-      navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
-   }
-}
