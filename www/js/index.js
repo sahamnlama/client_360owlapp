@@ -3,7 +3,7 @@ function onLoad() {
 }
 
 function aaa1(){
-
+  cordova.InAppBrowser.open('http://localhost:3000/aaa.html', '_blank', 'location=yes');
 };
 
 // device APIs are available
@@ -32,6 +32,7 @@ function onDeviceReady() {
 
   //cordova.InAppBrowser.open('http://192.168.1.6:7777', '_self', 'location=yes,hidden=no');
   var conn = new WebSocket('ws://192.168.1.5:7777');
+
 
   conn.onopen = function () {
     console.log("Connected to the signaling server");
