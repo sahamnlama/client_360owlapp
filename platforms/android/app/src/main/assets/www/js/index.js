@@ -31,7 +31,7 @@ function onDeviceReady() {
   }
 
   //cordova.InAppBrowser.open('http://192.168.1.6:7777', '_self', 'location=yes,hidden=no');
-  var conn = new WebSocket('ws://192.168.1.6:7777');
+  var conn = new WebSocket('ws://192.168.1.5:7777');
 
   conn.onopen = function () {
     console.log("Connected to the signaling server");
@@ -45,12 +45,12 @@ function onDeviceReady() {
   conn.onmessage = function (msg) {
     console.log("Got message", msg.data);
     var data = JSON.parse(msg.data);
-    alert(data);
+    //alert(data);
     //alert(msg.data);
     switch(data.type) {
        case "door_bell":
         console.log('someone visit');
-        alert('someone visit');
+      //  alert('someone visit');
 
 //         var media = new Media('https://signellingsvr360owl.herokuapp.com/doorbell.mp3', mediaSuccess, function(e){alert(e);});
 //         alert(JSON.stringify(media));
@@ -60,6 +60,9 @@ function onDeviceReady() {
              text: data.message,
              foreground: true
          });
+         var audioElement = document.getElementById("audioElement");
+         audioElement.play();
+
           break;
        default:
           break;
@@ -72,4 +75,4 @@ function onDeviceReady() {
       */
       function mediaSuccess(){
 
-      
+      };
