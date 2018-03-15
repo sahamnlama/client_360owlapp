@@ -9,7 +9,7 @@ function aaa1(){
 // device APIs are available
 //
 function onDeviceReady() {
-
+/*
   // Enable background mode
   cordova.plugins.backgroundMode.enable();
   // Android customization
@@ -28,7 +28,7 @@ function onDeviceReady() {
         resume: true
       });
   }, 10000);
-  }
+}*/
 
   //cordova.InAppBrowser.open('http://192.168.1.6:7777', '_self', 'location=yes,hidden=no');
   var conn = new WebSocket('ws://192.168.1.5:7777');
@@ -51,6 +51,7 @@ function onDeviceReady() {
        case "door_bell":
         console.log('someone visit');
       //  alert('someone visit');
+        //var data = JSON.parse(msg.data);
 
 //         var media = new Media('https://signellingsvr360owl.herokuapp.com/doorbell.mp3', mediaSuccess, function(e){alert(e);});
 //         alert(JSON.stringify(media));
