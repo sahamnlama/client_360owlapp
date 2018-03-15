@@ -38,6 +38,7 @@
     <body  onload="onLoad()">
 
         <h1>Apache Cordova</h1>
+        <button id = "audioCapture">AUDIO</button>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript">
         function onLoad() {
@@ -51,24 +52,29 @@
         // device APIs are available
         //
         function onDeviceReady() {
-          // capture callback
-          var captureSuccess = function(mediaFiles) {
-              var i, path, len;
-              for (i = 0, len = mediaFiles.length; i < len; i += 1) {
-                  path = mediaFiles[i].fullPath;
-                  // do something interesting with the file
-              }
-          };
-
-          // capture error callback
-          var captureError = function(error) {
-              navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
-          };
-
-          // start audio capture
-          navigator.device.capture.captureAudio(captureSuccess, captureError, {limit:2});
+document.getElementById("audioCapture").addEventListener("click", audioCapture);        
 
         }
+
+        function audioCapture() {
+   var options = {
+      limit: 1,
+      duration: 10
+   };
+   navigator.device.capture.captureAudio(onSuccess, onError, options);
+
+   function onSuccess(mediaFiles) {
+      var i, path, len;
+      for (i = 0, len = mediaFiles.length; i < len; i += 1) {
+         path = mediaFiles[i].fullPath;
+         console.log(mediaFiles);
+      }
+   }
+
+   function onError(error) {
+      navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
+   }
+}
         </script>
     </body>
 </html>
