@@ -3,7 +3,7 @@ function onLoad() {
 }
 
 function aaa1(){
-  cordova.InAppBrowser.open('http://localhost:3000/aaa.html', '_blank', 'location=yes');
+  cordova.InAppBrowser.open('aaa.html', '_blank', 'location=yes');
 };
 
 // device APIs are available
