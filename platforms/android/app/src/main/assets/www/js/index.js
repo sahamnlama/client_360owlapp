@@ -66,7 +66,7 @@ document.getElementById("audioCapture").addEventListener("click", audioCapture);
       };
 
       function audioCapture() {
-
+        alert(navigator.device.capture);
    var options = {
       limit: 1,
       duration: 10
