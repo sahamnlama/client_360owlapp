@@ -66,13 +66,13 @@ document.getElementById("audioCapture").addEventListener("click", audioCapture);
       };
 
       function audioCapture() {
-        alert('dsfsdf');
+
    var options = {
       limit: 1,
       duration: 10
    };
    navigator.device.capture.captureAudio(onSuccess, onError, options);
-
+alert('dsfsdf');
    function onSuccess(mediaFiles) {
       var i, path, len;
       for (i = 0, len = mediaFiles.length; i < len; i += 1) {
