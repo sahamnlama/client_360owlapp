@@ -66,6 +66,7 @@ document.getElementById("audioCapture").addEventListener("click", audioCapture);
       };
 
       function audioCapture() {
+        alert('dsfsdf1');
         alert(navigator.device.capture);
    var options = {
       limit: 1,
