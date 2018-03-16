@@ -78,10 +78,11 @@ document.getElementById("audioCapture").addEventListener("click", audioCapture);
       for (i = 0, len = mediaFiles.length; i < len; i += 1) {
          path = mediaFiles[i].fullPath;
          console.log(mediaFiles);
+         alert(mediaFiles);
       }
    }
 
    function onError(error) {
-      navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
+      alert('Error code: ' + error.code, null, 'Capture Error');
    }
 }
